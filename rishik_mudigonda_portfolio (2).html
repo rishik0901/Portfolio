@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Rishik Mudigonda — Product Management</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:opsz,wght@9..40,300;9..40,400;9..40,500&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --fg:#1a1a18;--fg-muted:#6b6b67;--fg-faint:#a8a8a4;
+  --bg:#faf9f7;--bg-card:#f3f2ef;
+  --accent:#1f4e8c;--accent-light:#e8eef8;--accent-mid:#3a72c4;
+  --border:rgba(26,26,24,0.1);
+  --serif:'DM Serif Display',Georgia,serif;
+  --sans:'DM Sans',system-ui,sans-serif;
+}
+@media(prefers-color-scheme:dark){:root{
+  --fg:#f0ede8;--fg-muted:#9a9793;--fg-faint:#5c5a57;
+  --bg:#111110;--bg-card:#1b1a18;
+  --accent:#5b9bd5;--accent-light:#172338;--accent-mid:#5b9bd5;
+  --border:rgba(240,237,232,0.1);
+}}
+html{scroll-behavior:smooth}
+body{font-family:var(--sans);background:var(--bg);color:var(--fg);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.1rem 3rem;background:var(--bg);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--serif);font-size:1.15rem;color:var(--fg);text-decoration:none;letter-spacing:-0.01em}
+.nav-links{display:flex;gap:2rem;list-style:none;align-items:center}
+.nav-links a{font-size:0.82rem;font-weight:400;color:var(--fg-muted);text-decoration:none;letter-spacing:0.04em;transition:color 0.2s}
+.nav-links a:hover{color:var(--fg)}
+.nav-badge{font-size:0.7rem;font-weight:500;background:var(--accent-light);color:var(--accent-mid);padding:0.2rem 0.65rem;border-radius:999px;letter-spacing:0.04em}
+
+section{padding:6rem 3rem}
+.container{max-width:980px;margin:0 auto}
+
+/* HERO */
+#hero{min-height:100vh;display:flex;align-items:center;padding-top:6rem}
+.hero-eyebrow{font-size:0.75rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--accent-mid);margin-bottom:1.25rem;display:flex;align-items:center;gap:0.5rem}
+.hero-eyebrow::before{content:'';display:inline-block;width:24px;height:1px;background:var(--accent-mid)}
+.hero-name{font-family:var(--serif);font-size:clamp(3rem,6vw,5.5rem);line-height:1.04;letter-spacing:-0.025em;color:var(--fg);margin-bottom:0.5rem}
+.hero-name em{font-style:italic;color:var(--fg-muted)}
+.hero-role{font-size:1.05rem;color:var(--accent-mid);font-weight:400;margin-bottom:1.5rem;letter-spacing:0.01em}
+.hero-desc{font-size:1.05rem;color:var(--fg-muted);max-width:520px;line-height:1.8;margin-bottom:2.5rem;font-weight:300}
+.hero-chips{display:flex;flex-wrap:wrap;gap:0.5rem;margin-bottom:2.5rem}
+.chip{font-size:0.7rem;font-weight:500;letter-spacing:0.07em;text-transform:uppercase;color:var(--fg-muted);border:1px solid var(--border);padding:0.3rem 0.75rem;border-radius:999px}
+.hero-actions{display:flex;gap:1rem;align-items:center;flex-wrap:wrap}
+.btn-primary{display:inline-block;padding:0.7rem 1.6rem;background:var(--fg);color:var(--bg);font-family:var(--sans);font-size:0.85rem;font-weight:500;text-decoration:none;border-radius:2px;letter-spacing:0.02em;transition:opacity 0.2s;border:none;cursor:pointer}
+.btn-primary:hover{opacity:0.78}
+.btn-ghost{display:inline-block;padding:0.7rem 1.6rem;font-family:var(--sans);font-size:0.85rem;font-weight:400;color:var(--fg-muted);text-decoration:none;letter-spacing:0.02em;border-bottom:1px solid var(--border);transition:color 0.2s,border-color 0.2s}
+.btn-ghost:hover{color:var(--fg);border-color:var(--fg)}
+
+/* LABELS */
+.section-label{font-size:0.72rem;font-weight:500;letter-spacing:0.14em;text-transform:uppercase;color:var(--fg-faint);margin-bottom:0.65rem}
+.section-title{font-family:var(--serif);font-size:clamp(2rem,3.5vw,2.8rem);line-height:1.1;letter-spacing:-0.02em;margin-bottom:3rem}
+
+/* ABOUT */
+#about{border-top:1px solid var(--border)}
+.about-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:5rem;align-items:start}
+.about-text p{color:var(--fg-muted);margin-bottom:1.2rem;font-weight:300;line-height:1.85}
+.detail-row{display:flex;justify-content:space-between;align-items:baseline;padding:0.8rem 0;border-bottom:1px solid var(--border);font-size:0.85rem}
+.detail-row:first-child{border-top:1px solid var(--border)}
+.detail-label{color:var(--fg-faint)}
+.detail-value{color:var(--fg);font-weight:500;text-align:right}
+.avail-dot{display:inline-block;width:6px;height:6px;background:#3aab6d;border-radius:50%;margin-right:0.4rem;animation:pulse 2s infinite;vertical-align:middle}
+@keyframes pulse{0%,100%{opacity:1}50%{opacity:0.4}}
+
+/* EXPERIENCE */
+#experience{border-top:1px solid var(--border);background:var(--bg-card)}
+.exp-item{padding:2.25rem 0;border-bottom:1px solid var(--border)}
+.exp-item:last-child{border-bottom:none}
+.exp-header{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;margin-bottom:1rem}
+.exp-company{font-size:0.72rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--accent-mid);margin-bottom:0.3rem}
+.exp-title{font-family:var(--serif);font-size:1.3rem;letter-spacing:-0.01em;line-height:1.2}
+.exp-meta{font-size:0.78rem;color:var(--fg-faint);margin-top:0.25rem}
+.exp-period{font-size:0.78rem;color:var(--fg-faint);white-space:nowrap;text-align:right}
+.exp-bullets{list-style:none;display:flex;flex-direction:column;gap:0.65rem}
+.exp-bullets li{font-size:0.9rem;color:var(--fg-muted);font-weight:300;line-height:1.7;padding-left:1.2rem;position:relative}
+.exp-bullets li::before{content:'—';position:absolute;left:0;color:var(--fg-faint)}
+
+/* PROJECTS */
+#projects{border-top:1px solid var(--border)}
+.projects-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5px;background:var(--border);border:1px solid var(--border)}
+.project-card{background:var(--bg);padding:2.25rem;cursor:pointer;transition:background 0.2s;position:relative}
+.project-card:hover{background:var(--accent-light)}
+.project-num{font-size:0.72rem;color:var(--fg-faint);letter-spacing:0.08em;margin-bottom:1.75rem}
+.project-title{font-family:var(--serif);font-size:1.3rem;line-height:1.2;margin-bottom:0.65rem;letter-spacing:-0.01em}
+.project-desc{font-size:0.875rem;color:var(--fg-muted);line-height:1.7;font-weight:300;margin-bottom:1.5rem}
+.project-tags{display:flex;flex-wrap:wrap;gap:0.35rem}
+.tag{font-size:0.68rem;font-weight:500;letter-spacing:0.06em;text-transform:uppercase;color:var(--accent-mid);background:var(--accent-light);padding:0.25rem 0.6rem;border-radius:1px}
+.project-arrow{position:absolute;top:2.25rem;right:2.25rem;font-size:1rem;color:var(--fg-faint);transition:transform 0.2s,color 0.2s;text-decoration:none}
+.project-card:hover .project-arrow{transform:translate(2px,-2px);color:var(--accent-mid)}
+
+/* SKILLS */
+#skills{border-top:1px solid var(--border)}
+.skills-layout{display:grid;grid-template-columns:200px 1fr;gap:4rem}
+.skills-nav{position:sticky;top:7rem;height:fit-content}
+.skill-tab{display:block;padding:0.65rem 0;font-size:0.875rem;color:var(--fg-muted);cursor:pointer;border-bottom:1px solid var(--border);transition:color 0.15s;background:none;border-left:none;border-right:none;border-top:none;text-align:left;width:100%;font-family:var(--sans)}
+.skill-tab:first-child{border-top:1px solid var(--border)}
+.skill-tab:hover,.skill-tab.active{color:var(--fg)}
+.skill-tab.active{font-weight:500}
+.skills-content{display:grid;grid-template-columns:1fr 1fr;gap:0.85rem}
+.skill-item{padding:1.1rem 1.25rem;border:1px solid var(--border);border-radius:2px}
+.skill-name{font-size:0.85rem;font-weight:500;margin-bottom:0.5rem;color:var(--fg)}
+.skill-bar-bg{height:2px;background:var(--border);border-radius:1px;overflow:hidden}
+.skill-bar-fill{height:100%;background:var(--accent-mid);border-radius:1px;transition:width 0.7s cubic-bezier(0.4,0,0.2,1)}
+
+/* CERTS */
+.certs-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:0.85rem;margin-top:0}
+.cert-card{padding:1.25rem 1.5rem;border:1px solid var(--border);border-radius:2px}
+.cert-icon{font-size:1.2rem;margin-bottom:0.6rem}
+.cert-name{font-size:0.85rem;font-weight:500;color:var(--fg);margin-bottom:0.25rem}
+.cert-issuer{font-size:0.75rem;color:var(--fg-faint)}
+
+/* CONTACT */
+#contact{border-top:1px solid var(--border)}
+.contact-grid{display:grid;grid-template-columns:1fr 1.2fr;gap:5rem;align-items:start}
+.contact-left p{color:var(--fg-muted);font-weight:300;line-height:1.8;margin-bottom:2rem}
+.contact-links{display:flex;flex-direction:column;gap:0.75rem}
+.contact-link{font-size:0.85rem;color:var(--fg-muted);text-decoration:none;display:flex;align-items:center;gap:0.5rem;transition:color 0.15s}
+.contact-link:hover{color:var(--accent-mid)}
+.contact-form{display:flex;flex-direction:column;gap:1rem}
+.form-group{display:flex;flex-direction:column;gap:0.35rem}
+.form-label{font-size:0.7rem;font-weight:500;letter-spacing:0.09em;text-transform:uppercase;color:var(--fg-faint)}
+.form-control{font-family:var(--sans);font-size:0.875rem;color:var(--fg);background:transparent;border:1px solid var(--border);border-radius:2px;padding:0.7rem 1rem;outline:none;transition:border-color 0.2s;resize:none}
+.form-control:focus{border-color:var(--fg-muted)}
+.form-control::placeholder{color:var(--fg-faint)}
+.form-submit{align-self:flex-start;padding:0.7rem 1.75rem;background:var(--fg);color:var(--bg);font-family:var(--sans);font-size:0.85rem;font-weight:500;border:none;border-radius:2px;cursor:pointer;letter-spacing:0.02em;transition:opacity 0.2s}
+.form-submit:hover{opacity:0.8}
+
+footer{border-top:1px solid var(--border);padding:1.75rem 3rem;display:flex;justify-content:space-between;align-items:center}
+.footer-copy{font-size:0.78rem;color:var(--fg-faint)}
+
+.fade-up{opacity:0;transform:translateY(18px);transition:opacity 0.6s ease,transform 0.6s ease}
+.fade-up.visible{opacity:1;transform:none}
+
+@media(max-width:720px){
+  nav{padding:1rem 1.5rem}
+  section{padding:4rem 1.5rem}
+  .about-grid,.contact-grid{grid-template-columns:1fr;gap:2.5rem}
+  .projects-grid,.certs-grid{grid-template-columns:1fr}
+  .skills-layout{grid-template-columns:1fr;gap:2rem}
+  .skills-content{grid-template-columns:1fr}
+  .exp-header{grid-template-columns:1fr}
+  footer{flex-direction:column;gap:0.5rem;text-align:center}
+  .nav-links{gap:1.25rem}
+  .nav-badge{display:none}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#hero" class="nav-logo">Rishik Mudigonda</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><span class="nav-badge">Open to all roles</span></li>
+  </ul>
+</nav>
+
+<section id="hero">
+  <div class="container">
+    <p class="hero-eyebrow">Product Management · Data Science · KL University '26</p>
+    <h1 class="hero-name">Rishik<br><em>Mudigonda</em></h1>
+    <p class="hero-role">PM Intern @ Palo Alto Networks · Open to PM, Data Science, Analytics & AI roles</p>
+    <p class="hero-desc">I sit at the intersection of product, data, and technology — with real enterprise PM experience, a data science foundation, and hands-on AI/ML work. I turn messy problems into clear, measurable outcomes.</p>
+    <div class="hero-chips">
+      <span class="chip">Product Management</span>
+      <span class="chip">Data Science</span>
+      <span class="chip">Business Analysis</span>
+      <span class="chip">AI / LLM Engineering</span>
+      <span class="chip">Data Analytics</span>
+    </div>
+    <div class="hero-actions">
+      <a href="#experience" class="btn-primary">View my work</a>
+      <a href="#contact" class="btn-ghost">Get in touch</a>
+    </div>
+  </div>
+</section>
+
+<section id="about">
+  <div class="container">
+    <p class="section-label">About me</p>
+    <div class="about-grid">
+      <div class="about-text fade-up">
+        <p>I'm a final-year CSE (Data Science) student at KL University, currently interning as a Product Management Intern at Palo Alto Networks — working directly with a Director of PM on a high-stakes enterprise platform migration.</p>
+        <p>My day-to-day involves owning migration tracking for 500+ enterprise tenants, building dashboards that go directly to senior leadership, and synthesising cross-functional feedback into roadmap decisions. It's taught me what PM really looks like at scale: messy data, competing priorities, and the urgent need to bring clarity fast.</p>
+        <p>I'm looking for full-time roles in India starting mid-2026 — across Product Management, Data Science, Business & Data Analysis, and AI/LLM Engineering. What ties these together: I'm most effective where technical depth, data fluency, and clear communication all matter.</p>
+      </div>
+      <div class="fade-up">
+        <div class="detail-row"><span class="detail-label">Based in</span><span class="detail-value">Hyderabad, India</span></div>
+        <div class="detail-row"><span class="detail-label">Degree</span><span class="detail-value">B.Tech CSE (Data Science)</span></div>
+        <div class="detail-row"><span class="detail-label">University</span><span class="detail-value">KL University, '26</span></div>
+        <div class="detail-row"><span class="detail-label">Current role</span><span class="detail-value">PM Intern @ Palo Alto Networks</span></div>
+        <div class="detail-row"><span class="detail-label">Availability</span><span class="detail-value"><span class="avail-dot"></span>Open — mid 2026</span></div>
+        <div class="detail-row"><span class="detail-label">Target roles</span><span class="detail-value">PM · Data · AI · Strategy</span></div>
+        <div class="detail-row"><span class="detail-label">Email</span><span class="detail-value">rishik.mudigonda91@gmail.com</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <p class="section-label">Experience</p>
+    <h2 class="section-title fade-up">Where I've worked</h2>
+
+    <div class="exp-item fade-up">
+      <div class="exp-header">
+        <div>
+          <p class="exp-company">Palo Alto Networks</p>
+          <h3 class="exp-title">Product Management Intern</h3>
+          <p class="exp-meta">Enterprise Cybersecurity · Hyderabad, India · Team: Director of PM + 2 PMs</p>
+        </div>
+        <p class="exp-period">Dec 2025 – Present</p>
+      </div>
+      <ul class="exp-bullets">
+        <li>Owned end-to-end migration tracking for 500+ enterprise tenants — independently designed and built the Excel/Sheets tracking system used by the entire PM team to monitor migration status, flag at-risk accounts, and report live progress to leadership.</li>
+        <li>Presented migration dashboards directly to senior stakeholders, synthesising complex multi-tenant data into executive-ready reports that enabled confident prioritisation and resourcing decisions at pace.</li>
+        <li>Drove tenant identification and prioritisation at scale: analysed 500+ accounts to surface which tenants required migration, applying structured business-impact criteria to triage and sequence the rollout.</li>
+        <li>Collaborated cross-functionally via Jira & Confluence, partnering with engineering and customer-success teams to document blockers, track resolution, and keep all stakeholders aligned on migration timelines.</li>
+      </ul>
+    </div>
+
+    <div class="exp-item fade-up">
+      <div class="exp-header">
+        <div>
+          <p class="exp-company">Algoleap Technologies</p>
+          <h3 class="exp-title">Data Science Intern</h3>
+          <p class="exp-meta">AI & Analytics Consulting · Hyderabad, India</p>
+        </div>
+        <p class="exp-period">Jun 2025 – Nov 2025</p>
+      </div>
+      <ul class="exp-bullets">
+        <li>Translated ML pipeline outputs into stakeholder-ready insights — built end-to-end analytics workflows with database integration and self-serve Tableau dashboards, enabling non-technical business users to query and explore data independently.</li>
+        <li>Implemented Model Context Protocol (MCP): designed intelligent model-interaction and data-driven automation workflows that reduced manual analysis overhead across the team.</li>
+        <li>Developed and optimised machine-learning pipelines for client analytics projects, owning the full lifecycle from data ingestion through model evaluation and deployment.</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<section id="projects">
+  <div class="container">
+    <p class="section-label">Selected projects</p>
+    <h2 class="section-title fade-up">Things I've built</h2>
+    <div class="projects-grid fade-up">
+      <div class="project-card">
+        <p class="project-num">01</p>
+        <a class="project-arrow" href="https://github.com/rishik0901" target="_blank">↗</a>
+        <h3 class="project-title">NL Query Chatbot (MCP)</h3>
+        <p class="project-desc">Identified that non-technical users couldn't query databases without SQL knowledge — designed and shipped a full LLM-powered chatbot that converts natural language into SQL across two connected databases, with a Flask UI and structured result tables.</p>
+        <div class="project-tags">
+          <span class="tag">Flask</span><span class="tag">MySQL</span><span class="tag">OpenAI API</span><span class="tag">Python</span><span class="tag">MCP</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <p class="project-num">02</p>
+        <a class="project-arrow" href="https://github.com/rishik0901" target="_blank">↗</a>
+        <h3 class="project-title">Credit Card Fraud Detection</h3>
+        <p class="project-desc">Full lifecycle ownership — from problem framing and data preprocessing through feature engineering, model training, and evaluation — shipping a production-ready fraud-detection system using logistic regression.</p>
+        <div class="project-tags">
+          <span class="tag">Python</span><span class="tag">Scikit-learn</span><span class="tag">Pandas</span><span class="tag">NumPy</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <p class="project-num">03</p>
+        <span class="project-arrow">↗</span>
+        <h3 class="project-title">Enterprise Migration Tracker</h3>
+        <p class="project-desc">Independently designed and built the tracking infrastructure used by Palo Alto Networks' PM team to monitor migration status for 500+ enterprise tenants — surfacing at-risk accounts and delivering executive-ready dashboards to senior leadership.</p>
+        <div class="project-tags">
+          <span class="tag">Excel / Sheets</span><span class="tag">Jira</span><span class="tag">Confluence</span><span class="tag">PM Strategy</span>
+        </div>
+      </div>
+      <div class="project-card">
+        <p class="project-num">04</p>
+        <span class="project-arrow">↗</span>
+        <h3 class="project-title">Analytics Dashboard Suite</h3>
+        <p class="project-desc">Built end-to-end analytics workflows at Algoleap with database integration and self-serve Tableau dashboards — enabling non-technical business users to query and explore complex ML pipeline outputs independently.</p>
+        <div class="project-tags">
+          <span class="tag">Tableau</span><span class="tag">Python</span><span class="tag">SQL</span><span class="tag">ML Pipelines</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <p class="section-label">Skills & tools</p>
+    <h2 class="section-title fade-up">What I bring</h2>
+    <div class="skills-layout">
+      <div class="skills-nav">
+        <button class="skill-tab active" onclick="showSkills('pm',this)">Product</button>
+        <button class="skill-tab" onclick="showSkills('data',this)">Data & Analytics</button>
+        <button class="skill-tab" onclick="showSkills('tech',this)">Technical</button>
+        <button class="skill-tab" onclick="showSkills('tools',this)">Tools</button>
+        <button class="skill-tab" onclick="showCerts(this)">Certifications</button>
+      </div>
+      <div>
+        <div class="skills-content" id="skills-content"></div>
+        <div class="certs-grid" id="certs-grid" style="display:none">
+          <div class="cert-card"><div class="cert-icon">☁️</div><p class="cert-name">AWS Cloud Practitioner</p><p class="cert-issuer">Amazon Web Services · Dec 2025</p></div>
+          <div class="cert-card"><div class="cert-icon">⚡</div><p class="cert-name">Agentforce Specialist</p><p class="cert-issuer">Salesforce · Dec 2025</p></div>
+          <div class="cert-card"><div class="cert-icon">🤖</div><p class="cert-name">Automation Anywhere 360</p><p class="cert-issuer">Automation Anywhere · KL University</p></div>
+          <div class="cert-card"><div class="cert-icon">📊</div><p class="cert-name">Data Analytics & Visualisation</p><p class="cert-issuer">Coursera</p></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="contact">
+  <div class="container">
+    <p class="section-label">Get in touch</p>
+    <h2 class="section-title fade-up">Let's connect</h2>
+    <div class="contact-grid">
+      <div class="contact-left fade-up">
+        <p>I'm actively looking for full-time roles in India starting mid-2026 — across Product Management, Data Science, Business & Data Analysis, and AI/LLM Engineering. If you think I'd be a good fit, I'd love to hear from you.</p>
+        <div class="contact-links">
+          <a href="mailto:rishik.mudigonda91@gmail.com" class="contact-link">✉ rishik.mudigonda91@gmail.com</a>
+          <a href="tel:+916302392277" class="contact-link">📞 +91 63023 92277</a>
+          <a href="https://linkedin.com/in/rishikmudigonda" target="_blank" class="contact-link">↗ linkedin.com/in/rishikmudigonda</a>
+          <a href="https://github.com/rishik0901" target="_blank" class="contact-link">↗ github.com/rishik0901</a>
+        </div>
+      </div>
+      <div class="contact-form fade-up">
+        <div class="form-group">
+          <label class="form-label">Name</label>
+          <input type="text" class="form-control" placeholder="Your name">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Email</label>
+          <input type="email" class="form-control" placeholder="your@email.com">
+        </div>
+        <div class="form-group">
+          <label class="form-label">Message</label>
+          <textarea class="form-control" rows="5" placeholder="Tell me about the opportunity or say hi…"></textarea>
+        </div>
+        <button class="form-submit" id="send-btn">Send message →</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <span class="footer-copy">© 2026 Rishik Mudigonda</span>
+  <span class="footer-copy">Hyderabad, India · Open to PM, Data & AI roles</span>
+</footer>
+
+<script>
+const skillData = {
+  pm:[
+    {name:"Stakeholder Presentations",pct:92},
+    {name:"Platform Migration Strategy",pct:85},
+    {name:"Customer Research",pct:80},
+    {name:"Cross-functional Collaboration",pct:90},
+    {name:"Jira & Confluence",pct:88},
+  ],
+  data:[
+    {name:"Python",pct:90},
+    {name:"SQL",pct:88},
+    {name:"Tableau",pct:85},
+    {name:"Excel / Google Sheets",pct:95},
+    {name:"Machine Learning",pct:82},
+    {name:"Feature Engineering",pct:78},
+  ],
+  tech:[
+    {name:"Scikit-learn",pct:80},
+    {name:"Flask",pct:75},
+    {name:"Jupyter Notebook",pct:88},
+    {name:"Model Context Protocol",pct:78},
+    {name:"R",pct:70},
+  ],
+  tools:[
+    {name:"Jira",pct:88},
+    {name:"Confluence",pct:85},
+    {name:"Salesforce",pct:75},
+    {name:"Tableau",pct:85},
+    {name:"GitHub",pct:80},
+  ],
+};
+
+function showSkills(cat, btn){
+  document.querySelectorAll('.skill-tab').forEach(t=>t.classList.remove('active'));
+  if(btn) btn.classList.add('active');
+  document.getElementById('certs-grid').style.display='none';
+  const container=document.getElementById('skills-content');
+  container.style.display='grid';
+  container.innerHTML=skillData[cat].map(s=>`
+    <div class="skill-item">
+      <div class="skill-name">${s.name}</div>
+      <div class="skill-bar-bg"><div class="skill-bar-fill" style="width:0%" data-w="${s.pct}%"></div></div>
+    </div>`).join('');
+  setTimeout(()=>{
+    container.querySelectorAll('.skill-bar-fill').forEach(b=>{b.style.width=b.dataset.w});
+  },50);
+}
+
+function showCerts(btn){
+  document.querySelectorAll('.skill-tab').forEach(t=>t.classList.remove('active'));
+  btn.classList.add('active');
+  document.getElementById('skills-content').style.display='none';
+  document.getElementById('certs-grid').style.display='grid';
+}
+
+showSkills('pm', document.querySelector('.skill-tab'));
+
+const observer=new IntersectionObserver(entries=>{
+  entries.forEach(e=>{if(e.isIntersecting)e.target.classList.add('visible')});
+},{threshold:0.12});
+document.querySelectorAll('.fade-up').forEach(el=>observer.observe(el));
+
+document.getElementById('send-btn').addEventListener('click',()=>{
+  const btn=document.getElementById('send-btn');
+  btn.textContent='Message sent ✓';
+  btn.style.background='#3aab6d';
+  setTimeout(()=>{btn.textContent='Send message →';btn.style.background='var(--fg)'},3000);
+});
+</script>
+</body>
+</html>
